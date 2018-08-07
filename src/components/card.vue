@@ -1,5 +1,5 @@
 <template>
-  <div class='card'>
+  <div class='card' @click="openMusicList">
     <img :src="music.cover" class="image"/>
     <p class="version">vol.{{music.id}}</p>
     <h2 class="title">{{music.title}}</h2>
@@ -34,6 +34,10 @@ export default {
       } else {
         this.image = pauseButton
       }
+    },
+    openMusicList () {
+      const url = '../music-list/main'
+      wx.navigateTo({ url })
     }
   },
 

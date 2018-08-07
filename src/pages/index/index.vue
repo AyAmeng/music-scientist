@@ -65,7 +65,7 @@ export default {
 
   methods: {
     bindViewTap () {
-      const url = '../HomePage/main'
+      const url = '../home-page/main'
       wx.navigateTo({ url })
     },
     getUserInfo () {
