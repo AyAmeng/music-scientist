@@ -1,10 +1,10 @@
 <template>
   <div class='card' @click="openMusicList">
-    <img :src="music.cover" class="image"/>
+    <div :src="music.cover" class="image" :style="cover"/>
     <p class="version">vol.{{music.id}}</p>
     <h2 class="title">{{music.title}}</h2>
     <p class="create-date">#民谣 创建于 2018-07-12</p>
-    <img class="play-btn" :src="image" @click="handleButtonClick"/>
+    <div><img class="play-btn" :src="image" @click="handleButtonClick"/></div>
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
   data () {
     return {
       image: playButton,
-      isPsuse: true
+      isPsuse: true,
+      cover: undefined
     }
   },
   props: {
@@ -43,6 +44,8 @@ export default {
 
   mounted () {
     console.info(this.music)
+    this.cover = `background-image: url(${this.music.cover})` // :style = [object Object] Not Support
+    console.info(this.cover)
   }
 }
 </script>
@@ -72,13 +75,12 @@ export default {
 .image {
   height: 200px;
   width: 100%;
-  background-size: 100% 100%;
-  background-position: center center;
+  background-size: cover;
   border-radius: 3px;
+  background-position: center;
 }
 
 .play-btn {
-  margin-top: 40px;
   width: 40px;
   height: 40px;
 }
@@ -86,18 +88,7 @@ export default {
 .create-date {
   font: 13px/22px Verdana,'微软雅黑','Microsoft YaHei',Helvetica,Arial;
   color: #7d7d7d;
-  margin-top: 10px;
+  margin: 10px 0 40px;
 }
 
-
-.button {
-  margin-top: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 20px;
-  border-radius: 50%;
-  background: pink;
-  text-align: center;
-}
 </style>
